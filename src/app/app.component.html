@@ -1,0 +1,148 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+  <div class="container">
+  <div class="row"> 
+    <div class="col-xs-6" *ngFor="let companyitem of companylist; let i=index">
+      <!--Company-->
+      <h1>{{companyitem.CompanyName}}</h1>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Street Address:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{companyitem.Street}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">City, ST, ZIP:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{companyitem.City}}, {{companyitem.Street}} , {{companyitem.Zip}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Phone:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{companyitem.PhoneNumber}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Fax:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{companyitem.Fax}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Website:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{companyitem.Webiste}} </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6" *ngFor="let invoiceitem of invoicelist; let i=index">
+      <!--Invoice-->
+      <h1>Invoice</h1>
+      <div class="form-group">
+        <label class="col-sm-3" for="usr">DATE:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="DateOfInvoice"  [(ngModel)]="invoiceitem.DateOfInvoice" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3" for="pwd">INVOICE #:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="InvoiceId" [(ngModel)]="invoiceitem.InvoiceId">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3" for="usr">CUSTOMER ID:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="CustomerId" [(ngModel)]="invoiceitem.CustomerId">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3" for="pwd">DUE DATE:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="DueDate" [(ngModel)]="invoiceitem.DueDate">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row"> 
+    <div class="col-xs-6" *ngFor="let customeritem of customerlist; let i=index">
+      <!--Customer-->
+      <h1>Bill To:</h1>
+      <div class="form-group">
+        <label class="control-label col-sm-3">FirstName:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{customeritem.FirstName}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">LastName:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{customeritem.LastName}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Street Address:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{customeritem.Street}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">City, ST, ZIP:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{customeritem.City}}, {{customeritem.Street}} , {{customeritem.Zip}} </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Phone:</label>
+        <div class="col-sm-9">
+          <p class="form-control-static">{{customeritem.PhoneNumber}} </p>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  <div class="row">
+    <!--Table-->
+    <div class="col-xs-12"> 
+      <table class="table selectable-table">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>taxed</th>
+            <th>Amount</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let invoiceItem of invoiceitemslist; let i=index">
+            <td>{{invoiceItem.ItemDescription}}</td>
+            <td>{{invoiceItem.isTaxable}}</td>
+            <td>{{invoiceItem.Price}}</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-8">Comments</div>
+<div class="col-xs-4">Taxable Amount Table</div>
+
+</body>
+<footer>
+<div>
+  <a href="https:/www.vertex42.com/ExcelTemplates/excel-invoice-template.html" target="_blank" rel="noopener">
+    https:/www.vertex42.com/ExcelTemplates/excel-invoice-template.html
+  </a>
+</div>
+</footer>
+
+<router-outlet></router-outlet>
